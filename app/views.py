@@ -3,7 +3,8 @@ from django.http import HttpResponse
 # Create your views here.
 
 def main(request):
-    return HttpResponse("Hola")
+    loco = "hola"
+    return render(request, 'app/plantilla.html', {})
 
 def aparcamientos(request):
     return HttpResponse("aparcamientos")
