@@ -1,0 +1,26 @@
+body{ /* Default size: 14px */
+    background-color: white;
+}
+
+a{
+    text-decoration:none;
+}
+#cabecera{
+    background-color: blue;
+}
+#banner{
+	display: inline-block;
+	height: 4em;
+	width: 4em;
+	margin: auto;
+}
+
+#login{
+	margin: auto;
+	float: right;
+	background-color: white;
+}
+
+footer{
+    background-color:gray;
+}
