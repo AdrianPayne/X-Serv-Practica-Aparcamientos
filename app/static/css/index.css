@@ -1,26 +1,55 @@
 body{ /* Default size: 14px */
     background-color: white;
+    width: 1024px;
+    margin: auto;
 }
 
-a{
-    text-decoration:none;
+#recursos{
+	display: block;
+    background-color: green;
 }
+
+    #recursos p {
+        background-color: green;
+        font-size: 4em;
+        margin: auto;
+    }
+
 #cabecera{
     background-color: blue;
+    padding: 5px;
 }
 #banner{
-	display: inline-block;
+	display: block;
 	height: 4em;
 	width: 4em;
 	margin: auto;
 }
 
+#coliz{
+    float: left;
+    padding: 5px;
+    background-color: red;
+    width: 694px;
+}
+
+#colder{
+    float: right;
+    padding: 5px;
+    background-color: yellow;
+    width: 300px;
+}
+
 #login{
-	margin: auto;
 	float: right;
 	background-color: white;
 }
 
 footer{
     background-color:gray;
+    clear: both;
+}
+
+a{
+    text-decoration:none;
 }

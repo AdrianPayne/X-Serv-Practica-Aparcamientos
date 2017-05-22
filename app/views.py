@@ -4,10 +4,20 @@ from django.http import HttpResponse
 
 def main(request):
     loco = "hola"
-    return render(request, 'app/base_index.html', {})
+    return render(request, 'base_index.html', {})
 
 def aparcamientos(request):
     return HttpResponse("aparcamientos")
+
+
+def aparcamiento(request, id):  #INDIVIDUAL
+    return HttpResponse("APARCAMIENTO")
+
+def usuario(request):
+    return HttpResponse("USUARIO")
+
+def usuarioXML(request):
+    return HttpResponse("USUARIOXML")
 
 def about(request):
     return HttpResponse("about")
