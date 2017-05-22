@@ -8,8 +8,8 @@ class aparcamiento(models.Model):
     barrio= models.TextField(default="")
     distrito= models.TextField(default="")
     accesibilidad= models.TextField(default="")
-    latitud= models.IntegerField(default=0)
-    longitud= models.IntegerField(default=0)
+    latitud= models.FloatField(default=0)
+    longitud= models.FloatField(default=0)
 
 class CSS(models.Model):
     usuario= models.ForeignKey(User)

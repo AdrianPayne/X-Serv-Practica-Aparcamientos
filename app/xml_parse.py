@@ -78,7 +78,7 @@ class myContentHandler(ContentHandler):
          text = self.theContent + chars
          self.theContent = unescape(text, html_escape_table)
 
-def getParking ():
+def getAparcamientos ():
 #Load parser and driver
     theParser = make_parser()
     theHandler = myContentHandler()
@@ -86,4 +86,4 @@ def getParking ():
 # Ready, set, go!
     theParser.parse('http://datos.munimadrid.es/portal/site/egob/menuitem.ac61933d6ee3c31cae77ae7784f1a5a0/?vgnextoid=00149033f2201410VgnVCM100000171f5a0aRCRD&format=xml&file=0&filename=202584-0-aparcamientos-residentes&mgmtid=e84276ac109d3410VgnVCM2000000c205a0aRCRD&preview=full')
     Parks = theHandler.Park
-return Parks
+    return Parks

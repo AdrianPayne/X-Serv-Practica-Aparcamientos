@@ -4,50 +4,65 @@ body{ /* Default size: 14px */
     margin: auto;
 }
 
-#recursos{
-	display: block;
-    background-color: green;
-}
-
-    #recursos p {
-        background-color: green;
-        font-size: 4em;
-        margin: auto;
-    }
-
 #cabecera{
     background-color: blue;
     padding: 5px;
+	height: 90px;
 }
-#banner{
+    #banner{
+	    display: inline;
+	    height: 90px;
+	    width: 90px;
+        float: left;
+    }
+    #login{
+	    float: right;
+	    background-color: white;
+    }
+
+#recursos{
 	display: block;
-	height: 4em;
-	width: 4em;
-	margin: auto;
+    background-color: gray;
 }
 
-#coliz{
-    float: left;
-    padding: 5px;
-    background-color: red;
-    width: 694px;
+    #recursos p {
+        border-top: 1px solid #eaecef;
+            border-top-width: 1px;
+            border-top-style: solid;
+            border-top-color: rgb(234, 236, 239);
+        background-color: gray;
+        font-size: 4em;
+        margin: auto;
+    }
+#content{
+    border-top: 1px solid #eaecef;
+        border-top-width: 1px;
+        border-top-style: solid;
+        border-top-color: rgb(234, 236, 239);
 }
+    #coliz{
+        float: left;
+        padding: 5px;
+        background-color: white;
+        width: 694px;
+    }
 
-#colder{
-    float: right;
-    padding: 5px;
-    background-color: yellow;
-    width: 300px;
-}
+    #colder{
+        float: right;
+        padding: 5px;
+        background-color: gray;
+        width: 300px;
+    }
 
-#login{
-	float: right;
-	background-color: white;
-}
+
 
 footer{
-    background-color:gray;
+    background-color:white;
     clear: both;
+    border-top: 1px solid #eaecef;
+        border-top-width: 1px;
+        border-top-style: solid;
+        border-top-color: rgb(234, 236, 239);
 }
 
 a{

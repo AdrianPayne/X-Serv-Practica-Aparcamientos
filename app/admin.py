@@ -1,3 +1,7 @@
 from django.contrib import admin
+from app.models import aparcamiento, CSS, comentario, seleccionado
 
-# Register your models here.
+admin.site.register(aparcamiento)
+admin.site.register(CSS)
+admin.site.register(comentario)
+admin.site.register(seleccionado)
