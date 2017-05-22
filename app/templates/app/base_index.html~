@@ -2,7 +2,7 @@
 {% load staticfiles %}
 <html>
 	<head>
-		<link type="text/css" rel="stylesheet" href="{% static 'css/index.css' %}"/>
+		<link type="text/css" rel="stylesheet" href="{% static 'css/main.css' %}"/>
 		<title>TITULO PAGINA</title>
 	</head>
 	<body>

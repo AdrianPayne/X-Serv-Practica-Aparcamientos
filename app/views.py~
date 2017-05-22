@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 def main(request):
     loco = "hola"
-    return render(request, 'app/base_index.html', {})
+    return render(request, 'app/plantilla.html', {})
 
 def aparcamientos(request):
     return HttpResponse("aparcamientos")
