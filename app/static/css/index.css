@@ -42,14 +42,12 @@ body{ /* Default size: 14px */
 }
     #coliz{
         float: left;
-        padding: 5px;
         background-color: white;
         width: 694px;
     }
 
     #colder{
         float: right;
-        padding: 5px;
         background-color: gray;
         width: 300px;
     }
@@ -59,7 +57,7 @@ body{ /* Default size: 14px */
 footer{
     background-color:white;
     clear: both;
-    border-top: 1px solid #eaecef;
+    border-top: 4px solid #eaecef;
         border-top-width: 1px;
         border-top-style: solid;
         border-top-color: rgb(234, 236, 239);

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends "base_index.html" %}
+{% block content %}
+<div id="register">
+	  <h2><strong><center>¡Regístrate!</center></strong></h2>
+		<br/>
+	  <form action="" method="Post">
+			{% csrf_token %}
+				<div id="name">
+					<label for="username">Name</label>
+					<input name="username" type="text" value="" autocomplete="off"/>
+				</div>
+				<div>
+					<label for="username">Password</label>
+					<input name="password" type="password" value="" />
+				</div>
+				<br/>
+				<center><input class="submitbutton" type="submit" value="Register"/></center>
+	  </form>
+</div>
+{% endblock %}

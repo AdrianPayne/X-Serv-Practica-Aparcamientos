@@ -15,12 +15,11 @@ class aparcamiento(models.Model):
     def __str__(self):
         return self.nombre
 
-
 class CSS(models.Model):
-    user = models.ForeignKey(User, default="")
-    title = models.CharField(max_length=50, blank=True, null=True)
-    color = models.CharField(max_length=10, blank=True, null=True)
-    size = models.IntegerField(blank=True, null=True)
+    user= models.ForeignKey(User)
+    title= models.TextField(default="Pagina de usuario")
+    color= models.CharField(default="#808080", max_length=32)
+    size= models.IntegerField(default=1)
     def __str__(self):
         return str(self.user)
 

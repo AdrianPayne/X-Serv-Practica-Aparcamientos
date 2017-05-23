@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<head>
+	<!-- Always force latest IE rendering engine & Chrome Frame -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<!-- Put your title here! -->
+  <title>Aparcamientos en Madrid</title>
+  <meta name="description" content="Pagina web creada para mostrar los aparcamientos para residentes" />
+  <meta name="viewport" content="width=device-width">
+  <meta name="keywords" content="aparcamientos, residentes, Madrid" />
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700|Merriweather:400,700,900" rel="stylesheet">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  <script src="js/modernizr-2.6.1.min.js"></script>
+</head>
+
+
+<body>
+	<header>
+    <header id="master-header" class="clearfix" role="banner">
+
+      <hgroup>
+        <h1 id="site-title">
+          <a href="/"><img id ="banner" border = "0" src="images/1.jpg" width ='1000px' height='800%'>
+          </a>
+        </h1>
+      </hgroup>
+      </header>
+			  <div id="main" class="row clearfix">
+      <!-- Main navigation -->
+      <nav class="main-navigation clearfix span12" role="navigation">
+        <h3 class="assistive-text">Main menu</h3>
+        <ul>
+          <li><a href="/">Inicio</a></li>
+          <li>
+            <a href="/aparcamientos">Todos</a>
+            <ul class="sub-menu">
+              <li><a href="/access">Accesibles</a></li>
+            </ul>
+          </li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </nav> <!-- #main-navigation -->
+
+
+<div id="content" role="main" class="span7">
+
+      	<article class="post hentry">
+
+					{% if userConfig.title == "default" %}
+					 <h3> <b>Pagina de {{userPage.username}} </b></h3>
+					  {% else %}
+					 <h3> <b>{{userConfig.title}} </b></h3>
+					  {% endif %}
+        <ul>
+        {% for fav in ParkingList %}
+        <p><li>Nombre: <strong>{{fav.name}}</strong></li></p>
+        <p><li>Descripción: <strong>{{fav.body}}</strong></li></p>
+        <p><li><a href= "alojamiento/{{fav.name}}"> Más información </a></li></p>
+      {% endfor %}
+    </ul>
+  </article> <!-- .post.hentry -->
+
+</div> <!-- #content -->
+    <div id="sidebar" role="complementary" class="span4">
+			<aside class="widget">
+			<div id="login">
+				{% if user.is_authenticated %}
+				<h2>  Eres: <a href="/{{user}}"> {{user}}</a></h2>
+				 <h6><a href="logout/"> LOGOUT </a> </h6>
+				{% endif %}
+			</div>
+			</aside>
+			<aside class="widget">
+			{% if not user.is_authenticated %}
+			<td><h3> Registrate: </h3>
+			<form action="register/" method="POST">
+				{% csrf_token %}
+				<p>Nickname: <input type="text" name="login" value="" placeholder="Username" autocomplete="off"></p>
+				<p>Password: <input type="password" name="password" value="" placeholder="Password"></p>
+				<input type="submit" value="Enviar"/>
+			</form></td>
+			</aside>
+			<aside class="widget">
+			<td><h3> Iniciar Sesión: </h3>
+				<form action="login/" method="POST">
+				{% csrf_token %}
+				<p>Nickname: <input type="text" name="login" value="" placeholder="Username" autocomplete="off"></p>
+				<p>Password: <input type="password" name="password" value="" placeholder="Password" ></p>
+				<input type="submit" value="Enviar"/>
+			</form></td>
+			{% endif %}
+			</aside>
+			<aside class="widget">
+      {% if user.username == userPage.username %}
+      <h2> Configuración de página: </h2>
+      <form method="POST" action="">
+        {% csrf_token %}
+        Cambia tu título de página:
+        <input type="text" size="15" maxlength="50" value="Titulo de la pagina." name="newTitle" autocomplete="off"/>
+				<p></p>
+					{% csrf_token %}
+        Cambia el color de fondo:
+        <select name = "backgroundSelected">
+        <optgroup label="Paleta:">
+            <option value="None">-</option>
+            <option value="#DC143C">Rojo</option>
+            <option value="#90EE90">Verde</option>
+            <option value="#00FFFF">Aqua</option>
+          </optgroup>
+        </select>
+				<p></p>
+          {% csrf_token %}
+        Cambia el tamaño de la letra:
+        <select name = "letterSize">
+        <optgroup label="Anchura:">
+            <option value="None">-</option>
+            <option value="10">20 ppx</option>
+            <option value="20">30 ppx</option>
+          </optgroup>
+        </select>
+        <p></p>
+        <input type="submit" value="Submit"/>
+            </form>
+      <a href="/{{user.username}}/XML"> Ver XML </a>
+      {% endif %}
+			</aside>
+	    </div> <!-- #sidebar -->
+    </div>
+    <footer id="footer" role="contentinfo">
+      <!-- You're free to remove the credit link to Jayj.dk in the footer, but please, please leave it there :) -->
+Esta aplicación utiliza datos del portal de datos abierto de la ciudad de Madrid <a href="http://datos.munimadrid.es/portal/site/egob/menuitem.ac61933d6ee3c31cae77ae7784f1a5a0/?vgnextoid=00149033f2201410VgnVCM100000171f5a0aRCRD&format=xml&file=0&filename=202584-0-aparcamientos-residentes&mgmtid=e84276ac109d3410VgnVCM2000000c205a0aRCRD&preview=full"> ver </a></p>
+    </footer> <!-- #footer -->
+
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
+
+    <!-- Load custom scripts -->
+    <script src="js/script.js"></script>
+  </body>
+</html>

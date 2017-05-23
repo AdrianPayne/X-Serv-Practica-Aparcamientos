@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% extends "base_index.html" %}
+{% block content %}
+    <div id=datos_aparcamiento>
+        <a href={{parking.url}}><h1>{{parking.nombre}}</h1></a>
+        <ul>
+            <li><strong>DESCRIPCIÓN: </strong>{{parking.descripcion}}</li>
+            <br>
+            <li><strong>DISTRITO: </strong>{{parking.distrito}}</li>
+            <li><strong>BARRIO: </strong>{{parking.barrio}}</li>
+            <br>
+            <li><strong>ACCESIBILIDAD: </strong>{{parking.accesibilidad}}</li>
+            <br>
+            <li><strong>LATITUD: </strong>{{parking.latitud}}</li>
+            <li><strong>LONGITUD: </strong>{{parking.longitud}}</li>
+            <br>
+            <li><strong>CONTACTO: </strong>telefono: {{parking.telefono}} | email: {{parking.email}}</li>
+        </ul>
+    </div> 
+{% endblock %}

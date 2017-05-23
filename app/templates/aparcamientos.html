@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% extends "base_index.html" %}
+{% block content %}
+    <div id=lista_aparcamientos>
+        <h1>TODOS LOS APARCAMIENTOS</h1>
+            <ul>
+            {%for parking in parking_list%}
+                <li><a href="aparcamientos/{{parking.id}}" >{{parking.nombre}}</a></li>
+            {%empty%}
+                <h2>BASE DE DATOS VACIA</h2>
+            {%endfor%}
+            </ul>
+    </div> 
+{% endblock %}

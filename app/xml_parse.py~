@@ -36,7 +36,7 @@ class myContentHandler(ContentHandler):
         if name == 'atributo' and self.atrSection in self.dataSection:
             self.ParkingList[self.atrSection] = self.theContent
             self.atrSection = ""
-        if name == 'atributo'and (self.atrSection == 'LOCALIZACION' or self.atrSection == 'DATOSCONTACTOS') and self.atrSection in self.dataSection:
+        if name == 'atributo'and( self.atrSection == 'LOCALIZACION' or self.atrSection == 'DATOSCONTACTOS') and self.atrSection in self.dataSection:
             self.ParkingList[self.atrSection] = self.theContent
             self.atrSection = ""
 

@@ -1,26 +1,68 @@
 body{ /* Default size: 14px */
     background-color: white;
+    width: 1024px;
+
+}
+
+#cabecera{
+    background-color: blue;
+    padding: 5px;
+	height: 90px;
+}
+    #banner{
+	    display: inline;
+	    height: 90px;
+	    width: 90px;
+        float: left;
+    }
+    #login{
+	    float: right;
+	    background-color: white;
+    }
+
+#recursos{
+	display: block;
+    background-color: gray;
+}
+
+    #recursos p {
+        border-top: 1px solid #eaecef;
+            border-top-width: 1px;
+            border-top-style: solid;
+            border-top-color: rgb(234, 236, 239);
+        background-color: gray;
+        font-size: 4em;
+        margin: auto;
+    }
+#content{
+    border-top: 1px solid #eaecef;
+        border-top-width: 1px;
+        border-top-style: solid;
+        border-top-color: rgb(234, 236, 239);
+}
+    #coliz{
+        float: left;
+        background-color: white;
+        width: 694px;
+    }
+
+    #colder{
+        float: right;
+        background-color: gray;
+        width: 300px;
+    }
+
+
+
+footer{
+    background-color:white;
+    clear: both;
+    border-top: 4px solid #eaecef;
+        border-top-width: 1px;
+        border-top-style: solid;
+        border-top-color: rgb(234, 236, 239);
 }
 
 a{
     text-decoration:none;
-}
-#cabecera{
-    background-color: blue;
-}
-#banner{
-	display: inline-block;
-	height: 30px;
-	width: 6em;
-	margin: auto;
-}
-
-#login{
-	margin: auto;
-	float: right;
-	background-color: white;
-}
-
-footer{
-    background-color:gray;
 }

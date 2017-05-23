@@ -54,6 +54,42 @@
                 {% endblock %}
             </div>
             <div id=colder>
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                <aside class="widget">
+                {% if user.username == userPage.username %}
+                    <h2> Configuración de página: </h2>
+                    <form method="POST" action="">
+                    {% csrf_token %}
+                        Cambia tu título de página:
+                        <input type="text" size="15" maxlength="50" value="Titulo de la pagina." name="newTitle" autocomplete="off"/>
+	                    <p></p>
+		            {% csrf_token %}
+                        Cambia el color de fondo:
+                        <select name = "backgroundSelected">
+                        <optgroup label="Paleta:">
+                            <option value="None">-</option>
+                            <option value="#DC143C">Rojo</option>
+                            <option value="#90EE90">Verde</option>
+                            <option value="#00FFFF">Aqua</option>
+                        </optgroup>
+                    </select>
+	                    <p></p>
+                    {% csrf_token %}
+                        Cambia el tamaño de la letra:
+                        <select name = "letterSize">
+                        <optgroup label="Anchura:">
+                            <option value="None">-</option>
+                            <option value="10">20 ppx</option>
+                            <option value="20">30 ppx</option>
+                        </optgroup>
+                        </select>
+                        <p></p>
+                        <input type="submit" value="Submit"/>
+                    </form>
+                    <a href="/{{user.username}}/XML"> Ver XML </a>
+                {% endif %}
+                </aside>
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     <strong>PAGINAS DE USUARIOS</strong><br>
 	                {% for user, CSS in users %}
 	                    <a href="/{{user.username}}"><strong class="link">{{CSS.title}}</strong></a><br/>
