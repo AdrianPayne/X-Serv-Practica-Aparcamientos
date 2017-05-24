@@ -3,6 +3,21 @@
 {% block content %}
 
 
+    <article class="post hentry">
 
+    {% if userConfig.title == "default" %}
+        <h3> <b>Pagina de {{userPage.username}} </b></h3>
+    {% else %}
+        <h3> <b>{{userConfig.title}} </b></h3>
+    {% endif %}
+        <ul>
+        {% for fav in ParkingList %}
+            <li><strong><a href="aparcamientos/{{fav.id}}" >{{fav.nombre}}</a></li></strong>
+            <p><strong>Descripción: </strong>{{fav.descripcion}}</p>
+            <p><a href= "aparcamientos/{{fav.id}}"> Más información </a></p>
+            </li>
+        {% endfor %}
+        </ul>
+    </article> <!-- .post.hentry -->
 
 {% endblock %}

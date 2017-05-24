@@ -2,10 +2,8 @@
 {% extends "base_index.html" %}
 {% block content %}
     <div id=datos_aparcamiento>
-        <h1>{{parking.nombre}}</h1>
+        <a href={{parking.url}}><h1>{{parking.nombre}}</h1></a>
         <ul>
-            <li><strong>URL: </strong>{{parking.url}}</li>
-            <br>
             <li><strong>DESCRIPCIÓN: </strong>{{parking.descripcion}}</li>
             <br>
             <li><strong>DISTRITO: </strong>{{parking.distrito}}</li>
@@ -16,7 +14,39 @@
             <li><strong>LATITUD: </strong>{{parking.latitud}}</li>
             <li><strong>LONGITUD: </strong>{{parking.longitud}}</li>
             <br>
-            <li><strong>CONTACTO: </strong>telefono: {{parking.telefono}} | email: {{parking.email}}</li>
+            <li><strong>CONTACTO: </strong>{{parking.telefono}}</li>
+            <li><strong>EMAIL: </strong>{{parking.email}}</li>
         </ul>
-    </div> 
+        <h2>Comentarios previos:</h2>
+        <ul>
+        {% for comment in comments %}
+            <li><b>{{comment.comentario}}</b><br>Realizado por: {{comment.usuario}} el {{comment.fecha}}<br>
+        {% endfor %}
+        </ul>
+        {% if user.is_authenticated %}
+        <form action="" method="POST">
+            <br></br>
+            <h2>Añade un comentario:</h2>
+            <textarea name="comentarios" rows="5" cols="90"></textarea>
+            {% csrf_token %}
+            <input type="submit" value="Submit">
+        </form>
+        {% endif %}
+        <form action="" method="POST">
+        {% csrf_token %}
+            <h3>Likes: {{currentRate}} </h3>
+            <input type="hidden" name="liked" value="1">
+            <input type="submit" value="Dar Like"/>
+            </form>
+            {% csrf_token %}
+            </form>
+            {% if user.is_authenticated %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            <h3>Añadir a mi pagina:</h3>
+            <input type="hidden" name="parking" value="{{parking.name}}">
+            <input type="submit" value="Favoritos"/>
+        </form>
+        {% endif %}
+        </div> 
 {% endblock %}

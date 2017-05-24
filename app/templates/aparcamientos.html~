@@ -2,10 +2,44 @@
 {% extends "base_index.html" %}
 {% block content %}
     <div id=lista_aparcamientos>
-        <h1>TODOS LOS APARCAMIENTOS</h1>
+        <form method="POST" action="/aparcamientos">
+        <select name = "district">
+        <optgroup label="Distrito:">
+            <option value="None">-</option>
+            <option value="FUENCARRAL-EL PARDO">Fuencarral-El Pardo</option>
+            <option value="MONCLOA-ARAVACA">Moncloa-Aravaca</option>
+            <option value="TETUAN">Tetuan</option>
+            <option value="HORTALEZA">Hortaleza</option>
+            <option value="CHAMARTIN">Chamartin</option>
+            <option value="CIUDAD LINEAL">Ciudad Lineal</option>
+            <option value="CHAMBERI">Chamberi</option>
+            <option value="SALAMANCA">Salamanca</option>
+            <option value="SAN BLAS-CANILLEJAS">San Blas-Canillejas</option>
+            <option value="BARAJAS">Barajas</option>
+            <option value="CENTRO">Centro</option>
+            <option value="RETIRO">Retiro</option>
+            <option value="ARGANZUELA">Arganzuela</option>
+            <option value="MORATALAZ">Moratalaz</option>
+            <option value="VILLAVERDE">Villaverde</option>
+            <option value="USERA">Usera</option>
+            <option value="LATINA">Latina</option>
+            <option value="CARABANCHEL">Carabanchel</option>
+            <option value="VICALVARO">Vicalvaro</option>
+            <option value="PUENTE DE VALLECAS">Puente de Vallecas</option>
+            <option value="VILLA DE VALLECAS">Villa de Vallecas</option>
+        </optgroup>
+        </select>
+        {% csrf_token %}
+        <input type="submit" value="Submit">
+        </form>
+        <form method="POST" action="/aparcamientos">
+        {% csrf_token %}
+            <button class="buttonstyle" name="accesible">Accesibles</button>
+        </form>
+<h1>TODOS LOS APARCAMIENTOS</h1>
             <ul>
             {%for parking in parking_list%}
-                <li><a href="aparcamientos/{{parking.id}}" ><p>{{parking.nombre}}</p></a></li>
+                <li><a href="aparcamientos/{{parking.id}}" >{{parking.nombre}}</a></li>
             {%empty%}
                 <h2>BASE DE DATOS VACIA</h2>
             {%endfor%}

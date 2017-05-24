@@ -14,7 +14,7 @@
     	    {% if user.is_authenticated %}
 				<h4>Bienvenido {{user.username}}</h4>
 				<a href="/{{user.username}}"><button class="buttonstyle"><span>Mi Pagina</span></button></a>
-				<a href="/{{user.username}}/xml"><button class="buttonstyle">XML</button></a>
+				<a href="/{{user.username}}/XML"><button class="buttonstyle">XML</button></a>
 				<a href="/logout/"><button class="buttonstyle">Logout</button></a>
             {% else %}
                 <form action="/login/" method="Post">
@@ -54,10 +54,44 @@
                 {% endblock %}
             </div>
             <div id=colder>
-                    <strong>PAGINAS DE USUARIOS</strong><br>
-	                {% for user, CSS in users %}
-	                    <a href="/{{user.username}}"><strong class="link">{{CSS.title}}</strong></a><br/>
-                    {%endfor%}
+                    {% if users%}
+                        <strong>PAGINAS DE USUARIOS</strong><br>
+	                    {% for user, CSS in users %}
+	                        <a href="/{{user.username}}"><strong class="link">{{CSS.title}}</strong></a><br/>
+                        {%endfor%}
+		            {% endif %}
+                <form>
+                {% if user.username == userPage.username %}
+                      <h2> Configuración de página: </h2>
+                      <form method="POST" action="">
+                        {% csrf_token %}
+                        Cambia tu título de página:
+                        <input type="text" size="15" maxlength="50" value="Titulo de la pagina." name="newTitle" autocomplete="off"/>
+				                <p></p>
+					                {% csrf_token %}
+                        Cambia el color de fondo:
+                        <select name = "backgroundSelected">
+                        <optgroup label="Paleta:">
+                            <option value="None">-</option>
+                            <option value="#DC143C">Rojo</option>
+                            <option value="#90EE90">Verde</option>
+                            <option value="#00FFFF">Aqua</option>
+                          </optgroup>
+                        </select>
+				                <p></p>
+                          {% csrf_token %}
+                        Cambia el tamaño de la letra:
+                        <select name = "letterSize">
+                        <optgroup label="Anchura:">
+                            <option value="None">-</option>
+                            <option value="10">20 ppx</option>
+                            <option value="20">30 ppx</option>
+                          </optgroup>
+                        </select>
+                        <p></p>
+                        <input type="submit" value="Submit"/>
+                        {% endif %}
+                </form>
             </div>
         </div>
         <footer>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ParkingList>
+  {% for park in ParkingList %}
+  <parking>
+    <basicData>
+      <name>{{park.nombre}}</name>
+      <address>{{park.descripcion}}</address>
+      <web>{{park.accesibilidad}}</web>
+      <body>{{park.url}}</body>
+    </basicData>
+    <geoData>
+      <latitude>{{hotel.latitud}}</latitude>
+      <longitude>{{hotel.longitud}}</longitude>
+    </geoData>
+    <datoscontactos>
+      <email>{{hotel.email}}</email>
+      <telefono>{{hotel.telefono}}</telefono>
+    </datoscontactos>
+  </parking>
+  {% endfor %}
+</ParkingList>

@@ -1,7 +1,8 @@
+
 body{ /* Default size: 14px */
     background-color: white;
     width: 1024px;
-
+    margin: auto;
 }
 
 #cabecera{

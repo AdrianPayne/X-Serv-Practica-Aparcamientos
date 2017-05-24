@@ -1,0 +1,41 @@
+{% extends "base_index.html" %}
+
+{% block content %}
+  <div id="about">
+    <h1> About this site </h1> <hr class="separator">
+    <p>
+      Practica de SARO 2017, realizada por <strong>Adrián Sacristán Ibáñez</strong>, IST+ADE.
+    <p>
+    <h3> Funcionamiento </h3>
+    <p> Tenemos varios recursos que utilizaremos:
+      <h4> Funcionalidad básica: </h4>
+      <ul>
+        <li>Recurso: "/": Muestra una lista de los 5 aparcamientos con mas comentarios
+            y,a la derecha, las páginas de usuario disponibles.</li>
+        <li>Recurso: "/aparcamientos": Muestra el listado de todos los aparcamientos
+            de la C.M y un formulario de filtrado por distritos. </li>
+        <li>Recurso: "/aparcamiento/id": Siendo el id el id del aparcamiento en cuestion,
+            muestra los datos almacenados del aparcamiento(extraido del XML).</li>
+        <li>Recurso: "/usuario": Siendo "usuario" un usuario registrado, muestra
+            la página de ese usuario, con sus aparcamientos seleccionados.</li>
+        <li>Recurso: "/usuario/xml": Siendo "usuario" un usuario registrado, muestra
+            el canal XML de dicho usuario. </li>
+        <li>Recurso: "/about": Muestra esta página. </li>
+      </ul>
+      <h4> Funcionalidad optativa: </h4>
+      <ul>
+        <li>Recurso: "/main/xml": Muestra el canal XML de la página principal.</li>
+        <li>Recurso: "/register": Permite dar de alta a un nuevo usuario. </li>
+        <li>Recurso: "/main/rss": Muestra el canal RSS de la página principal.</li>
+        <li>Recurso: "/map/id": Siendo "id" el identificador de un hotel, muestra en
+            openstreetmap y leaflet el hotel con un marcador.</li>
+        <li>Uso de script en JavaScript sencillo para generar el mapa con el marcador.</li>
+        <li>Diseño de página web personal, junto con banner.</li>
+        <li>Uso de favicon.</li>
+        <li>Uso de CSS3 junto con HTML5.</li>
+        <li>Protección anti-XSS para mayor seguridad.</li>
+      </ul>
+    </p>
+  </div>
+  <br/><br/>
+{% endblock %}

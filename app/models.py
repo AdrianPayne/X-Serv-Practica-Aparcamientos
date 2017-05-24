@@ -10,8 +10,10 @@ class aparcamiento(models.Model):
     accesibilidad= models.TextField(default="")
     latitud= models.FloatField(default=0)
     longitud= models.FloatField(default=0)
-    telefono= models.IntegerField(default=0)
+    telefono= models.TextField(default="")
     email= models.TextField(default="")
+    cantidad = models.IntegerField(default = 0)
+    rate = models.IntegerField(default = 0)
     def __str__(self):
         return self.nombre
 
