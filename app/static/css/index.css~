@@ -1,25 +1,29 @@
-
-body{ /* Default size: 14px */
+body{
     background-color: white;
     width: 1024px;
     margin: auto;
 }
 
 #cabecera{
-    background-color: blue;
-    padding: 5px;
-	height: 90px;
+    background-image: url("/static/madrid.jpg");
+    background-color: red;
+	height: 300px;
 }
     #banner{
 	    display: inline;
-	    height: 90px;
-	    width: 90px;
+	    height: 300px;
+	    width: 300px;
         float: left;
     }
     #login{
 	    float: right;
 	    background-color: white;
     }
+
+#mapid{
+    margin:0 auto;
+    display: block;
+}
 
 #recursos{
 	display: block;
@@ -45,23 +49,23 @@ body{ /* Default size: 14px */
         float: left;
         background-color: white;
         width: 694px;
+        color: {{color}};
     }
 
     #colder{
         float: right;
-        background-color: gray;
         width: 300px;
+        border-style: solid;
     }
-
 
 
 footer{
     background-color:white;
     clear: both;
-    border-top: 4px solid #eaecef;
-        border-top-width: 1px;
+    border-top: 10px solid #eaecef;
+        border-top-width: 5px;
         border-top-style: solid;
-        border-top-color: rgb(234, 236, 239);
+        border-top-color: gray;
 }
 
 a{

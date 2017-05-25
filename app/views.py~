@@ -54,7 +54,6 @@ def main(request):
     if aparcamientos_populares[0].quantity > 0:
         for contador in range(5):
             if aparcamientos_populares[contador].quantity > 0:
-                print(aparcamientos_populares[contador])
                 parking = aparcamiento.objects.get(nombre=aparcamientos_populares[contador])
                 lista_5 += {parking}
     #CONSTRUYE LISTA DE URL's DE USERS
@@ -64,6 +63,7 @@ def main(request):
         if str(user) != "superuser":
             config = CSS.objects.get(user=user)
             user_list += [(user, config.title)]
+
     #CONTRUYE EL HTML
     template = get_template('index.html')
     context = RequestContext(request, {'aparcamientos_populares' : lista_5, 'users' : user_list})
@@ -142,12 +142,14 @@ def auth(request):
 def css(request):
     color = "#808080"
     size = 120
+    print("antes del if")
     if request.user.is_authenticated():
+        print("pasa por el if")
         user = User.objects.get(username=request.user.username)
         userConfig = CSS.objects.get(user=user)
         color = CSS.color
         size = CSS.size
-    template = get_template("css/style.css")
+    template = get_template("app/static/css/index.css")
     print("hola")
     context = RequestContext(request, {"color": color, "size": size})
     return HttpResponse(template.render(context), content_type="text/css")
@@ -171,29 +173,9 @@ def register(request):
         template = get_template('index.html')
         return HttpResponseNotFound(template.render())
 
-def userpage(request, user):
-    if request.method =="POST":
-        newTitle = request.POST.get("newTitle")
-        newBGround = request.POST.get("backgroundSelected")
-        newLSize = request.POST.get("letterSize")
-        user = User.objects.get(username=user)
-        newConfig = CSS.objects.all()
-        try:
-            newConfig = CSS.objects.get(user=user)
-        except CSS.DoesNotExist:
-            newConfig.user = userPage
-            newConfig.update()
-        if newTitle != "Titulo de la pagina." and newTitle != newConfig.title and newTitle != None:
-            newConfig.title = newTitle
-            newConfig.save()
-        if newBGround != None and newBGround != newConfig.color:
-            newConfig.color = newBGround
-            newConfig.save()
-        if newLSize != None and newLSize != newConfig.size:
-            newConfig.size = newLSize
-            newConfig.save()
-
-    userPage = User.objects.get(username=user)
+def userpage(request, username):
+    #CONSTRUYE LISTA DE SELECCIONADOS POR EL USER
+    userPage = User.objects.get(username=username)
     userConfig = CSS.objects.all()
     try:
         userConfig = CSS.objects.get(user=userPage)
@@ -201,26 +183,16 @@ def userpage(request, user):
         userConfig.user = userPage
         userConfig.update()
     try:
-        ParkingFavs = seleccionado.objects.filter(user=userPage)
+        ParkingFavs = seleccionado.objects.filter(usuario=userPage)
         ParkingList = []
         for fav in ParkingFavs:
             ParkingList += [fav.aparcamiento]
-    except:
+    except ParkingFavs.DoesNotExist:
         ParkingList = ""
-    context = RequestContext(request, {"ParkingList" : ParkingList, "userPage" : userPage, "userConfig" : userConfig})
+    #CONTRUYE EL HTML
     template = get_template("userPage.html")
+    context = RequestContext(request, {"ParkingList" : ParkingList, "userPage" : userPage, "userConfig" : userConfig})
     return HttpResponse(template.render(context))
-
-def userXML(request, userXML):
-    ParkingList = []
-    user = User.objects.get(username = userXML)
-    ParkingFavs = seleccionado.objects.filter(usuario=user)
-    ParkingList = []
-    for fav in ParkingFavs:
-        ParkingList += [fav.aparcamiento]
-    context = RequestContext(request, {"ParkingList" : ParkingList})
-    template = get_template("userXML.xml")
-    return HttpResponse(template.render(context), content_type = "text/xml")
 
 def about(request):
     #CONTRUYE EL HTML

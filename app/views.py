@@ -54,7 +54,6 @@ def main(request):
     if aparcamientos_populares[0].quantity > 0:
         for contador in range(5):
             if aparcamientos_populares[contador].quantity > 0:
-                print(aparcamientos_populares[contador])
                 parking = aparcamiento.objects.get(nombre=aparcamientos_populares[contador])
                 lista_5 += {parking}
     #CONSTRUYE LISTA DE URL's DE USERS
@@ -64,6 +63,7 @@ def main(request):
         if str(user) != "superuser":
             config = CSS.objects.get(user=user)
             user_list += [(user, config.title)]
+
     #CONTRUYE EL HTML
     template = get_template('index.html')
     context = RequestContext(request, {'aparcamientos_populares' : lista_5, 'users' : user_list})
@@ -142,12 +142,14 @@ def auth(request):
 def css(request):
     color = "#808080"
     size = 120
+    print("antes del if")
     if request.user.is_authenticated():
+        print("pasa por el if")
         user = User.objects.get(username=request.user.username)
         userConfig = CSS.objects.get(user=user)
         color = CSS.color
         size = CSS.size
-    template = get_template("css/style.css")
+    template = get_template("app/static/css/index.css")
     print("hola")
     context = RequestContext(request, {"color": color, "size": size})
     return HttpResponse(template.render(context), content_type="text/css")
@@ -177,7 +179,6 @@ def userpage(request, username):
     userConfig = CSS.objects.all()
     try:
         userConfig = CSS.objects.get(user=userPage)
-        print("POR AQUI")
     except CSS.DoesNotExist:
         userConfig.user = userPage
         userConfig.update()
